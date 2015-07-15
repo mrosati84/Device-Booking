@@ -1,3 +1,4 @@
 *.pyc
+*.mo
 db.sqlite3
 devices/settings/local.py

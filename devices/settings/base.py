@@ -46,7 +46,12 @@ ROOT_URLCONF = 'devices.urls'
 
 WSGI_APPLICATION = 'devices.wsgi.application'
 
-LANGUAGE_CODE = 'it-IT'
+LANGUAGE_CODE = 'it'
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+    os.path.join(BASE_DIR, 'www/locale'),
+)
 
 TIME_ZONE = 'UTC'
 
