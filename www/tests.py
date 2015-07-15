@@ -1,4 +1,5 @@
-from django.test import TestCase
+import json
+from django.test import Client, TestCase
 from .models import Device, User
 from www.repositories.user_repository import UserRepository
 
@@ -11,8 +12,8 @@ class DeviceTestCase(TestCase):
 
         device.reserve(user) # reserve device for this user
 
-        assert device.reserved_by.email == 'mrosati@h-art.com'
-        assert user.device_set.first().serial_number == 'H-ART 2012 2736000000K'
+        self.assertEqual(device.reserved_by.email, 'mrosati@h-art.com')
+        self.assertEqual(user.device_set.first().serial_number, 'H-ART 2012 2736000000K')
 
     def test_device_has_method_to_check_if_its_reserved(self):
         device = Device.objects.first() # get a sample device
@@ -50,3 +51,22 @@ class UserRepositoryTestCase(TestCase):
         self.assertEqual(len(users), 2)
         self.assertEqual(users[0].email, 'rbutti@h-art.com')
         self.assertEqual(users[1].email, 'mrosati@h-art.com')
+
+class SiteFunctionalTestCase(TestCase):
+    fixtures = ['www_testdata.yaml']
+
+    def setUp(self):
+        self.client = Client()
+
+    def test_user_can_get_the_home_page(self):
+        response = self.client.get('/')
+
+        self.assertEqual(response.status_code, 200)
+
+    def test_user_can_autocomplete_users_last_name(self):
+        response = self.client.get('/users/', {'last_name': 'r'})
+
+        json_response = json.loads(response.content)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(json_response['suggestions']), 2)
