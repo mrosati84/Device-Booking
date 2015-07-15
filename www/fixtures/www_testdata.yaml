@@ -2,63 +2,63 @@
   pk: 1
   fields:
     name: "iPhone 4"
-    serial_number: H-ART 2012 2736000000K
+    serial_number: DEV-ID 2012 2736000000K
 
 - model: "www.device"
   pk: 2
   fields:
     name: "iPhone 4s"
-    serial_number: H-ART 2013 6625000000R
+    serial_number: DEV-ID 2013 6625000000R
 
 - model: "www.device"
   pk: 3
   fields:
     name: "iPhone 5"
-    serial_number: H-ART 2014 3378000000B
+    serial_number: DEV-ID 2014 3378000000B
 
 - model: "www.device"
   pk: 4
   fields:
     name: "iPhone 5s"
-    serial_number: H-ART 2014 9937000000Q
+    serial_number: DEV-ID 2014 9937000000Q
 
 - model: "www.device"
   pk: 5
   fields:
     name: "iPhone 6"
-    serial_number: H-ART 2015 1298000000N
+    serial_number: DEV-ID 2015 1298000000N
 
 - model: "www.user"
   pk: 1
   fields:
-    email: "mrosati@h-art.com"
-    first_name: "Matteo"
+    email: "user1@companyname.com"
+    first_name: "John"
     last_name: "Rosati"
 
 - model: "www.user"
   pk: 2
   fields:
-    email: "mfiaschini@h-art.com"
-    first_name: "Maurizio"
+    email: "user2@companyname.com"
+    first_name: "George"
     last_name: "Fiaschini"
 
 - model: "www.user"
   pk: 3
   fields:
-    email: "nruggeri@h-art.com"
+    email: "user3@companyname.com"
     first_name: "Nicholas"
     last_name: "Ruggeri"
 
 - model: "www.user"
   pk: 4
   fields:
-    email: "rbutti@h-art.com"
-    first_name: "Roberto"
+    email: "user4@companyname.com"
+    first_name: "Fritz"
     last_name: "Butti"
 
 - model: "www.user"
   pk: 5
   fields:
-    email: "cpavan@h-art.com"
-    first_name: "Cristian"
+    email: "user5@companyname.com"
+    first_name: "Mario"
     last_name: "Pavan"

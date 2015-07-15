@@ -12,8 +12,8 @@ class DeviceTestCase(TestCase):
 
         device.reserve(user) # reserve device for this user
 
-        self.assertEqual(device.reserved_by.email, 'mrosati@h-art.com')
-        self.assertEqual(user.device_set.first().serial_number, 'H-ART 2012 2736000000K')
+        self.assertEqual(device.reserved_by.email, 'user1@companyname.com')
+        self.assertEqual(user.device_set.first().serial_number, 'DEV-ID 2012 2736000000K')
 
     def test_device_has_method_to_check_if_its_reserved(self):
         device = Device.objects.first() # get a sample device
@@ -49,8 +49,8 @@ class UserRepositoryTestCase(TestCase):
 
         # order matters
         self.assertEqual(len(users), 2)
-        self.assertEqual(users[0].email, 'rbutti@h-art.com')
-        self.assertEqual(users[1].email, 'mrosati@h-art.com')
+        self.assertEqual(users[0].email, 'user4@companyname.com')
+        self.assertEqual(users[1].email, 'user1@companyname.com')
 
 class SiteFunctionalTestCase(TestCase):
     fixtures = ['www_testdata.yaml']
