@@ -2,3 +2,11 @@
     text-align: right;
     padding: 25px 0 0 0;
 }
+
+.btn i {
+    vertical-align: text-top;
+}
+
+i.free {
+    color: #5cb85c;
+}

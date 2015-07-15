@@ -36,14 +36,14 @@
                                 {% if device.is_reserved %}
                                     {{ device.reserved_by }}
                                 {% else %}
-                                    -
+                                    <i class="free glyphicon glyphicon-ok"></i>
                                 {% endif %}
                             </td>
                             <td>
                                 {% if device.is_reserved %}
-                                <a href="{% url 'devices:free' pk=device.id %}" class="btn btn-success">{{ _('Free') }}</a>
+                                <a href="{% url 'devices:free' pk=device.id %}" class="btn btn-success"><i class="glyphicon glyphicon-ok-sign"></i> {{ _('Free') }}</a>
                                 {% else %}
-                                <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-sm-{{ device.id }}">{{ _('Assign') }}</button>
+                                <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-sm-{{ device.id }}"><i class="glyphicon glyphicon-link"></i> {{ _('Assign') }}</button>
 
                                 <div class="modal fade bs-example-modal-sm-{{ device.id }}" tabindex="-1" role="dialog" style="display: none;">
                                     <div class="modal-dialog modal-sm">
