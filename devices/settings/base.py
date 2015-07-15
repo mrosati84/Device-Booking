@@ -4,6 +4,8 @@ BASE_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__), '../..'))
 
 FIXTURE_DIRS = (os.path.join(BASE_DIR, 'www/fixtures'))
 
+COMPANY_NAME = "ACME INC."
+
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
@@ -11,6 +13,11 @@ TEMPLATE_LOADERS = (
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates').replace('\\','/'),
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'www.context_processors.company_name',
 )
 
 ALLOWED_HOSTS = []
