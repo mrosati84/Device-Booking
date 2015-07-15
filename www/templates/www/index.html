@@ -2,16 +2,9 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-md-6">
-            <h1>{{ COMPANY_NAME }} Devices</h1>
-        </div>
-        <div class="col-md-6">
-            <div class="buttons">
-                <div class="btn-group">
-                    <button class="btn btn-default" type="button" id="show-reserved">{{ _('Show assigned') }}</button>
-                    <button class="btn btn-default" type="button" id="show-free">{{ _('Show free') }}</button>
-                    <button class="btn btn-default" type="button" id="show-all">{{ _('Show all') }}</button>
-                </div>
+        <div class="col-md-12">
+            <div class="page-header">
+                <h1>{{ COMPANY_NAME }} Devices</h1>
             </div>
         </div>
     </div>
@@ -23,7 +16,7 @@
                     <tr>
                         <th>Device</th>
                         <th>{{ _('Serial number') }}</th>
-                        <th>{{ _('Assigned to') }}</th>
+                        <th>{{ _('Status') }} &lsaquo; <a href="#" id="show-free">Free</a> ‧ <a href="#" id="show-reserved">Assigned</a> ‧ <a href="#" id="show-all">All</a> &rsaquo;</th>
                         <th>{{ _('Actions') }}</th>
                     </tr>
                 </thead>
@@ -74,17 +67,20 @@
             $(this).find('input').focus();
         });
 
-        $('#show-reserved').on('click', function () {
+        $('#show-reserved').on('click', function (e) {
+            e.preventDefault();
             $('tr.reserved').show();
             $('tr.free').hide();
         });
 
-        $('#show-free').on('click', function () {
+        $('#show-free').on('click', function (e) {
+            e.preventDefault();
             $('tr.free').show();
             $('tr.reserved').hide();
         });
 
-        $('#show-all').on('click', function () {
+        $('#show-all').on('click', function (e) {
+            e.preventDefault();
             $('tr.free').show();
             $('tr.reserved').show();
         });
