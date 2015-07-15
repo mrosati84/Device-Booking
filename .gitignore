@@ -1,2 +1,3 @@
 *.pyc
 db.sqlite3
+devices/settings/local.py
