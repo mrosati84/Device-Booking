@@ -8,9 +8,32 @@
         <link rel="stylesheet" href="{% static 'www/css/bootstrap-theme.min.css' %}"charset="utf-8">
         <link rel="stylesheet" href="{% static 'www/css/autocomplete.css' %}"charset="utf-8">
         <link rel="stylesheet" href="{% static 'www/css/main.css' %}"charset="utf-8">
+        {% block style %}{% endblock %}
     </head>
     <body>
         <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="#">{{ COMPANY_NAME }} Devices</a>
+                            </div>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ user.email }} <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{% url 'admin:index' %}">Admin site</a></li>
+                                        <li><a href="{% url 'admin:password_change' %}">Change password</a></li>
+                                        <li><a href="{% url 'admin:logout' %}?next=/">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
             {% block content %}{% endblock %}
         </div>
         <script type="text/javascript" src="{% static 'www/js/jquery.min.js' %}"></script>

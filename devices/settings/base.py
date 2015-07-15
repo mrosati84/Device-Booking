@@ -6,6 +6,8 @@ FIXTURE_DIRS = (os.path.join(BASE_DIR, 'www/fixtures'))
 
 COMPANY_NAME = "ACME INC."
 
+LOGIN_URL = '/admin/login/'
+
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
