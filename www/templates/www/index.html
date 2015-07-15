@@ -16,7 +16,7 @@
                     <tr>
                         <th>Device</th>
                         <th>{{ _('Serial number') }}</th>
-                        <th>{{ _('Status') }} &lsaquo; <a href="#" id="show-free">Free</a> ‧ <a href="#" id="show-reserved">Assigned</a> ‧ <a href="#" id="show-all">All</a> &rsaquo;</th>
+                        <th>{{ _('Status') }} &lsaquo; <a href="#" id="show-free">{{ _('Free') }}</a> ‧ <a href="#" id="show-reserved">{{ _('Assigned') }}</a> ‧ <a href="#" id="show-all">{{ _('All') }}</a> &rsaquo;</th>
                         <th>{{ _('Actions') }}</th>
                     </tr>
                 </thead>
@@ -34,7 +34,7 @@
                             </td>
                             <td>
                                 {% if device.is_reserved %}
-                                <a href="{% url 'devices:free' pk=device.id %}" class="btn btn-success"><i class="glyphicon glyphicon-ok-sign"></i> {{ _('Free') }}</a>
+                                <a href="{% url 'devices:free' pk=device.id %}" class="btn btn-success"><i class="glyphicon glyphicon-ok-sign"></i> {{ _('Set free') }}</a>
                                 {% else %}
                                 <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-sm-{{ device.id }}"><i class="glyphicon glyphicon-link"></i> {{ _('Assign') }}</button>
 
