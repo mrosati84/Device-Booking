@@ -6,6 +6,10 @@ from www.repositories.user_repository import UserRepository
 class DeviceTestCase(TestCase):
     fixtures = ['www_testdata.yaml']
 
+    def setUp(self):
+        client = Client()
+        client.login(username='admin', password='admin')
+
     def test_device_can_be_reserved_by_a_user(self):
         device = Device.objects.first() # get a sample device
         user = User.objects.first() # get a sample user
@@ -38,6 +42,10 @@ class DeviceTestCase(TestCase):
 class UserRepositoryTestCase(TestCase):
     fixtures = ['www_testdata.yaml']
 
+    def setUp(self):
+        client = Client()
+        client.login(username='admin', password='admin')
+
     def test_it_can_filter_using_last_name(self):
         ur = UserRepository()
 
@@ -58,12 +66,22 @@ class SiteFunctionalTestCase(TestCase):
     def setUp(self):
         self.client = Client()
 
-    def test_user_can_get_the_home_page(self):
+    def test_user_cannot_get_the_home_page_as_anonymous(self):
         response = self.client.get('/')
 
+        # user is redirected to login page
+        self.assertEqual(response.status_code, 302)
+
+        self.client.login(username='admin', password='admin')
+
+        response = self.client.get('/')
+
+        # user is authenticated now, should get 200
         self.assertEqual(response.status_code, 200)
 
     def test_user_can_autocomplete_users_last_name(self):
+        self.client.login(username='admin', password='admin')
+
         response = self.client.get('/users/', {'last_name': 'r'})
 
         json_response = json.loads(response.content)
